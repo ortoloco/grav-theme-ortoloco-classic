@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md flex-column p-0">
+
+<div class="d-inline-flex pt-2 pt-sm-0{# justify-content-between align-items-start p-1 #}" style="width: 100%">
+    <a href="{{ home_url }}" class="navbar-brand flex-grow-1"><span class="logo"></span></a>
+{#
+    <div class="d-block d-md-none align-self-start p-1 mynavicons">
+        <a href="login"><i class="fas fa-sign-in-alt"></i></a>
+    </div>
+#}
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#collapseNavbar" aria-controls="collapseNavbar"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars mynavicons"></i></span>
+    </button>
+</div>
+
+<div class="collapse navbar-collapse align-self-start" id="collapseNavbar">
+<ul class="navbar-nav flex-column">
+{% for page in pages.children.visible %}
+{% set current_page = (page.active or page.activeChild) ? ' active' : '' %}
+{% if (page.active or page.activeChild) and page.children.visible.count > 0 %}
+    <li class="nav-item"><a href="{{ page.url }}" class="nav-link p-1">{{ page.menu }}</a>
+            <ul class="navbar-nav flex-column">
+{% for child in page.children.visible %}
+{% set current_child = (child.active or child.activeChild) ? ' active' : '' %}
+                <li class="nav-item{{ current_child }}"><a href="{{ child.url }}" class="nav-link p-1">&raquo; {{ child.menu }}</a></li>
+{% endfor %}
+            </ul>
+    </li>
+{% else %}
+    <li class="nav-item{{ current_page }}">{% if page.header.isgap %}&nbsp;{% else %}<a href="{{ page.url }}" class="nav-link p-1">{{ page.menu }}</a>{% endif %}</li>
+{% endif %}
+{% endfor %}
+</ul>
+</div>
+</nav>

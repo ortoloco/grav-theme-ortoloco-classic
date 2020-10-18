@@ -1,0 +1,18 @@
+name: ortoloco Classic
+version: 2.0.0
+description: "ortoloco Classic is the traditional Böhnli theme - now based on Boostrap 4"
+icon: rocket
+author:
+  name: ortoloco
+  email: webmaster@ortoloco.ch
+homepage: https://github.com/ortoloco/grav-theme-ortoloco-classic
+demo: https://ortoloco.ch
+keywords: grav, theme, bootstrap, bootstrap4, ortoloco
+bugs: https://github.com/ortoloco/grav-theme-ortoloco-classic/issues
+readme: https://github.com/ortoloco/grav-theme-ortoloco-classic/README.md
+license: MIT
+
+dependencies:
+  - { name: bootstrapper}
+  - { name: grav, version: '>=1.5.10' }
+  

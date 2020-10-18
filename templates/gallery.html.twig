@@ -1,0 +1,13 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {{ page.content }}
+    
+    {% for image in page.media.images %}
+    <div class="gallery-image">
+        <a href="{{ image.url }}" data-fancybox="gallery" data-caption="{{ image.meta.title }}">
+            {{ image.cropZoom(150,150).html }}
+        </a>
+    </div>
+    {% endfor %}
+{% endblock %}

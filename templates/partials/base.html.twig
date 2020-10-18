@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+<head>
+{% block head %}
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include 'partials/metadata.html.twig' %}
+
+        <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+        <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
+
+        {% block stylesheets %}
+            {% do assets.addCss('theme://css/jquery.fancybox.min.css', 99) %}
+            {% do assets.addCss('theme://css/font-awesome-all.min.css', 98) %}
+            {% do assets.addCss('theme://css/ortoloco.css', 97) %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% do assets.addJs('jquery', 101) %}
+            {% do assets.addJs('theme://js/jquery.fancybox.min.js', 98) %}
+            {% do assets.addJs('theme://js/myfancybox.js', {group:'bottom'}) %}
+
+            {% if browser.getBrowser == 'msie' and browser.getVersion >= 8 and browser.getVersion <= 9 %}
+                {% do assets.addJs('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') %}
+                {% do assets.addJs('theme://js/html5shiv-printshiv.min.js') %}
+            {% endif %}
+        {% endblock %}
+
+{% block assets deferred %}
+{{ assets.css()|raw }}
+{{ assets.js()|raw }}
+{% endblock %}
+
+{% endblock head %}
+</head>
+
+<body class="{% block body_classes %}{{ page.header.body_classes }}{% endblock %}">
+<div class="container">
+    <div class="erbsetop d-none d-sm-block"></div>
+    <div class="erbseleft d-none d-sm-block"></div>
+    <div class="erbseright d-none d-sm-block"></div>
+    
+    <div class="row ortoloco pt-sm-5">
+        <div class="col-md-4 pb-3">
+            {% block header_navigation %}
+                {% include 'partials/navigation.html.twig' %}
+            {% endblock %}
+        </div>
+        <div class="col-md-8 pt-md-4">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    
+    <div class="row newsrow">
+        <div class="col-md-4">
+            {% set newsbox = page.find('/newsbox') %}
+            {% if page.header.newsbox_visible and newsbox.published %}
+            <div class="newsbox">{{ newsbox.content }}</div>
+            {% endif %}
+        </div>
+        <div class="col-md-8 homebox">
+            <div class="homeboximg"></div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 footerbox">
+            <div class="footerboximg"></div>
+        </div>
+        <a href="login" class="myooolink"></a>
+    </div>
+</div>
+
+{% block bottom %}
+    {{ assets.js('bottom')|raw }}
+{% endblock %}
+
+</body>
+</html>
