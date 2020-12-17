@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Courier New', monospace;
     background-color: #fffff7;
@@ -67,6 +71,10 @@ h6 {
 }
 
 /* contact form */
+.contact-form {
+    width: 95%;
+}
+
 .file-upload {
     line-height: 30px;
 }
@@ -152,14 +160,14 @@ input[type='color'],
 
 /* decoration */
 .logo {
-    background: url('../images/ortoloco_logo.png') 0 0px;
+    background: url('../images/ortoloco_logo.png?v=2.2') 0 0px;
     display: inline-block;
-    width: 220px;
-    height: 51px;
+    width: 235px;
+    height: 62px;
 }
 
 .logo:hover {
-    background-position: 0 51px;
+    background-position: 0 62px;
 }
 
 .container {
@@ -168,10 +176,6 @@ input[type='color'],
 }
 
 /* newsbox */
-.home .newsrow {
-    min-height: 400px;
-}
-
 .newsbox {
     margin-top: 25px;
     margin-bottom: 25px;
@@ -192,6 +196,7 @@ input[type='color'],
     font-size: 1.2em;
 }
 
+/* erbsli frame */
 .erbsetop {
     position: absolute;
     left: -20px;
@@ -222,49 +227,75 @@ input[type='color'],
     opacity: 1.0;
 }
 
-.home .homebox {
-    pointer-events: none;
-    min-height: 400px;
-}
-
-.home .homeboximg {
-    background-image: url('../images/ortoloco_home_small.gif');
-    background-position: right bottom;
+/* page deco elements */
+.deco-top {
     background-repeat: no-repeat;
     background-size: contain;
-    position: absolute;
-    bottom: -5px;
-    right: 30px;
-    width: 90%;
-    height: 600px;
+    background-position: right top;
 }
 
-.home .footerboximg {
-    background: none;
+.deco-top:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 
-.home .footerbox {
-    min-height: 0px;
+.oooo-kuh .deco-top {
+    background-image: url('../images/ortoloco_deco_wolke.png');
+    width: 33%;
 }
 
-.footerbox {
-    min-height: 40vw;
-    padding: none;
+.oooo-huehner .deco-top {
+    background-image: url('../images/ortoloco_deco_aepfel.png');
+    width: 33%;
 }
 
-.footerboximg {
-    background-image: url('../images/ortoloco_full.gif');
-    background-position: bottom;
+.oooo-muesli .deco-top {
+    background-image: url('../images/ortoloco_deco_vogel.png');
+    width: 33%;
+}
+
+.deco-bottom {
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: right top;
+}
+
+.deco-bottom:after {
+  content: "";
+  display: block;
+  padding-bottom: 80%;
+}
+
+.oooo-jam .deco-bottom {
+    background-image: url('../images/ortoloco_footer_produkte.png');
     width: 100%;
-    height: 100%;
+}
+
+.oooo-kuh .deco-bottom {
+    background-image: url('../images/ortoloco_footer_kuh.png');
+    width: 100%;
+}
+
+.oooo-huehner .deco-bottom {
+    background-image: url('../images/ortoloco_footer_huehner.png');
+    width: 100%;
+}
+
+.oooo-muesli .deco-bottom {
+    background-image: url('../images/ortoloco_footer_muesli.png');
+    width: 100%;
+}
+
+.oooo-classic .deco-bottom {
+    background-image: url('../images/ortoloco_footer_classic.png');
+    width: 100%;
 }
 
 .myooolink {
     position: absolute;
     right: 5px;
-    bottom: 15px;
+    bottom: 5px;
     width: 18px;
     height: 140px;
     display: inline-block;

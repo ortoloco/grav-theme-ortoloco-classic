@@ -13,7 +13,7 @@
         {% block stylesheets %}
             {% do assets.addCss('theme://css/jquery.fancybox.min.css', 99) %}
             {% do assets.addCss('theme://css/font-awesome-all.min.css', 98) %}
-            {% do assets.addCss('theme://css/ortoloco.css', 97) %}
+            {% do assets.addCss('theme://css/ortoloco.css?v=2.2', 97) %}
         {% endblock %}
 
         {% block javascripts %}
@@ -41,35 +41,33 @@
     <div class="erbseleft d-none d-sm-block"></div>
     <div class="erbseright d-none d-sm-block"></div>
     
-    <div class="row ortoloco pt-sm-5">
+    <div class="row flex-grow-1 ortoloco pt-sm-5">
         <div class="col-md-4 pb-3">
             {% block header_navigation %}
                 {% include 'partials/navigation.html.twig' %}
             {% endblock %}
-        </div>
-        <div class="col-md-8 pt-md-4">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </div>
-    
-    <div class="row newsrow">
-        <div class="col-md-4">
+            
             {% set newsbox = page.find('/newsbox') %}
             {% if page.header.newsbox_visible and newsbox.published %}
-            <div class="newsbox">{{ newsbox.content }}</div>
+            <div class="newsbox d-none d-md-block">{{ newsbox.content }}</div>
             {% endif %}
         </div>
-        <div class="col-md-8 homebox">
-            <div class="homeboximg"></div>
+        <div class="col-md-8 pt-md-4">
+            <div class="float-right deco-top"></div>
+            
+            {% block content %}
+            {% endblock %}
+            
+            {% set newsbox = page.find('/newsbox') %}
+            {% if page.header.newsbox_visible and newsbox.published %}
+            <div class="newsbox d-block d-md-none">{{ newsbox.content }}</div>
+            {% endif %}
+            
+            <div class="float-right deco-bottom"></div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-12 footerbox">
-            <div class="footerboximg"></div>
-        </div>
-        <a href="login" class="myooolink"></a>
-    </div>
+
+    <a href="login" class="myooolink"></a>
 </div>
 
 {% block bottom %}
